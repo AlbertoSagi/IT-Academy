@@ -8,14 +8,16 @@ public class M01N1F4App {
 
 	public static void main(String[] args) {
 		
-		//Se introduce fecha mediante JOptionPane, serán en tipo String
+		//Se introduce fecha mediante JOptionPane, serán en tipo String, y lo convertimos en int para usarlos posteriormente en el LocalDate y condicional
 		
 		String diaNaixemenText = JOptionPane.showInputDialog("¿En quin día vas néixer?");
-				
+		int diaNaixementInt = Integer.parseInt(diaNaixemenText);
+		
 		String mesNaixemenText = JOptionPane.showInputDialog("¿I en quin mes?");
-				
+		int mesNaixementInt = Integer.parseInt(mesNaixemenText);
+		
 		String anyNaixemenText = JOptionPane.showInputDialog("¿I en quin any?");
-		int anyNaixementInt = Integer.parseInt(anyNaixemenText);  // Convierto el String a int ya que lo utilizaré más adelante en el condicional
+		int anyNaixementInt = Integer.parseInt(anyNaixemenText);  
 		
 		//Defino variable del nombre con apellidos
 		String nomCognoms = "Lionel Messi Cuccittini";
@@ -30,17 +32,10 @@ public class M01N1F4App {
 		//Muestro en pantalla la primera frase
 		System.out.println("El meu nom és "+ nomCognoms);
 		
-		//Diseño formato de la fecha
+		//Diseño formato de la fecha y recojo datos proporcionados int en variable de tipo LocalDate
 		DateTimeFormatter format1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		//Recojo los datos proporcionados en una variable tipo String
-		String str_date = diaNaixemenText + "/" + mesNaixemenText + "/" + anyNaixemenText;
-		//Transformo la fecha tipo String en tipo LocalDate.
-		LocalDate fecha = LocalDate.parse(str_date, format1);
-		// Le indico en qué formato quiero la fecha
-		String formatDate = fecha.format(format1);
-		
-		//Muestro en pantalla la segunda frase con la fecha
-		System.out.println("Vaig nèixer el "+ formatDate);
+		LocalDate date = LocalDate.of(anyNaixementInt, mesNaixementInt, diaNaixementInt);
+		System.out.println("Vaig nèixer el: " + date.format(format1));
 		
 		//Muestro en pantalla última frase indicando si el año es de traspaso o no.				
 		if (trasp == true) {
