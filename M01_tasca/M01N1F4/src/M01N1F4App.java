@@ -31,14 +31,16 @@ public class M01N1F4App {
 		System.out.println("El meu nom és "+ nomCognoms);
 		
 		//Diseño formato de la fecha
-		DateTimeFormatter format1 = DateTimeFormatter.ofPattern("d/MM/yyyy");
+		DateTimeFormatter format1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		//Recojo los datos proporcionados en una variable tipo String
 		String str_date = diaNaixemenText + "/" + mesNaixemenText + "/" + anyNaixemenText;
 		//Transformo la fecha tipo String en tipo LocalDate.
 		LocalDate fecha = LocalDate.parse(str_date, format1);
+		// Le indico en qué formato quiero la fecha
+		String formatDate = fecha.format(format1);
 		
 		//Muestro en pantalla la segunda frase con la fecha
-		System.out.println("Vaig nèixer el "+ fecha);
+		System.out.println("Vaig nèixer el "+ formatDate);
 		
 		//Muestro en pantalla última frase indicando si el año es de traspaso o no.				
 		if (trasp == true) {
